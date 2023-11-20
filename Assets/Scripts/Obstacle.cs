@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour
 {
     private ObstacleController obstacleCotroller;
     public float moveSpeed = 5f;   // 이동 속도
+
     private void Start()
     {
         obstacleCotroller = GameObject.Find("ObstacleController").GetComponent<ObstacleController>();
@@ -22,6 +23,7 @@ public class Obstacle : MonoBehaviour
             MoveToDestination();
         }
     }
+    //목표지점 시간에 따른 이동
     private void MoveToDestination()
     {
         transform.position = Vector3.MoveTowards(transform.position, obstacleCotroller.endPosition.position, moveSpeed * Time.deltaTime);

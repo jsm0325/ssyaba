@@ -6,13 +6,27 @@ public class ObstacleController : MonoBehaviour
 {
     public Transform startPosition; // 장애물 나타나는 지점
     public Transform endPosition; // 장애물 사라지는 지점
+    public Transform middlePosition;
+    public int bpm = 0;
+    double currentTime = 0d;
 
     public ObstaclePool obstaclePool;
 
     void Start()
     {
-        // 시작할 때 3초마다 ActivateObstacle 함수를 호출
-        InvokeRepeating("ActivateObstacle", 0f, 3f);
+
+    }
+
+    private void Update()
+    {
+        currentTime += Time.deltaTime;
+
+        if(currentTime >= 60d / bpm)
+        {
+            ActivateObstacle();
+
+            currentTime -= 60d / bpm;
+        }
     }
 
     void ActivateObstacle()
