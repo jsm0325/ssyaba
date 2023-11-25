@@ -102,11 +102,11 @@ public class GameManager : MonoBehaviour
     // 게임 승리 및 패배 관리
     public void GameOver()
     {
-        
+        // 실패 화면 및 점수
     }
 
     public void GameClear()
     {
-
+        // 성공 화면 및 점수
     }
 }
