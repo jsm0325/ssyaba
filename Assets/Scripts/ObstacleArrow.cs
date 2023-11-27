@@ -6,7 +6,7 @@ public class ObstacleArrow : MonoBehaviour
 {
     private ObstacleController obstacleCotroller;
     public float _duration;
-
+    private Vector3 middle;
     private void Awake()
     {
         obstacleCotroller = GameObject.Find("ObstacleController").GetComponent<ObstacleController>();
@@ -14,12 +14,14 @@ public class ObstacleArrow : MonoBehaviour
 
     private void OnEnable()
     {
+        middle = obstacleCotroller.middlePosition.position;
         StartCoroutine(COR_BezierCurves());
     }
     IEnumerator COR_BezierCurves(float duration = 1.0f)
     {
         float time = 0f;
 
+         
         while (true)
         {
             if (time > 1f)
@@ -27,8 +29,8 @@ public class ObstacleArrow : MonoBehaviour
                 time = 0f;
             }
 
-            Vector3 p4 = Vector3.Lerp(obstacleCotroller.startPosition.position, obstacleCotroller.middlePosition.position, time);
-            Vector3 p5 = Vector3.Lerp(obstacleCotroller.middlePosition.position, obstacleCotroller.endPosition.position, time);
+            Vector3 p4 = Vector3.Lerp(obstacleCotroller.startPosition.position, middle, time);
+            Vector3 p5 = Vector3.Lerp(middle, obstacleCotroller.endPosition.position, time);
             transform.position = Vector3.Lerp(p4, p5, time);
 
             Vector3 direction = p5 - p4;

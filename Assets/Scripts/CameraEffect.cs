@@ -38,11 +38,11 @@ public class CameraEffect : MonoBehaviour
     IEnumerator FadeDamageEffect()
     {
         Color color = damageEffect.color;
-        for (float alpha = 0.6f; alpha >= -0.1f; alpha -= 0.1f)
+        for (float alpha = 0.6f; alpha >= -0.1f; alpha -= 0.2f)
         {
             color.a = alpha;
             damageEffect.color = color;
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
