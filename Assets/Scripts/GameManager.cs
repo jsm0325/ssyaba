@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class GameManager : MonoBehaviour
     private int maxHp = 5;
     private int score = 0;
     private int currency = 0;
-
-
-
+    private string playerName = "No Name";
+    private bool cameraEffectState = true;
+    private bool isPaused = false;
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
     public static GameManager Instance
     {
@@ -103,10 +104,41 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         // 실패 화면 및 점수
+        GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void GameClear()
     {
         // 성공 화면 및 점수
+        GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
     }
+
+    public void SetName(TextMeshProUGUI Inputname)
+    {
+        playerName = Inputname.text;
+    }
+
+    public void SetCameraEffectState()
+    {
+        cameraEffectState = !cameraEffectState;
+    }
+    public bool ReturnCameraEffectState()
+    {
+        return cameraEffectState;
+    }
+
+    public void SetIsPaused()
+    {
+        if (isPaused == true)
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else if (isPaused == false)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+    }
+
 }
