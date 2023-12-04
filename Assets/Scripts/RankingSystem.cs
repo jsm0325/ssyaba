@@ -62,6 +62,9 @@ public class RankingSystem : MonoBehaviour
         {
             rankScoreText[i].text = bestScore[i].ToString();
             rankNameText[i].text = bestName[i];
+
+
+
         }
     }
     public void SetRanking()
@@ -72,6 +75,5 @@ public class RankingSystem : MonoBehaviour
             rankNameText[i] = ranking.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             rankScoreText[i] = ranking.transform.GetChild(i).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         }
-
     }
 }

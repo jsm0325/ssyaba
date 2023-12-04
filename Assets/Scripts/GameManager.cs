@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private string playerName = "No Name";
     private bool cameraEffectState = true;
     private bool isPaused = false;
+
+    public List<GameObject> hp = new List<GameObject>();
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
     public static GameManager Instance
     {
@@ -50,12 +52,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
+
+
     }
 
 
     void Update()
     {
-
+        if(GameObject.Find("hp1") != null)
+        {
+            hp.Add(GameObject.Find("hp1"));
+            hp.Add(GameObject.Find("hp2"));
+            hp.Add(GameObject.Find("hp3"));
+            hp.Add(GameObject.Find("hp4"));
+            hp.Add(GameObject.Find("hp5"));
+        }
     }
 
 
@@ -65,7 +76,10 @@ public class GameManager : MonoBehaviour
     {
         if (currentHp > 0)
         {
+            
             currentHp -= damage;
+            Debug.LogError(currentHp);
+            GameObject.Destroy(hp[currentHp]);
         }
         else if (currentHp == 0)
         {
@@ -140,5 +154,4 @@ public class GameManager : MonoBehaviour
             isPaused = true;
         }
     }
-
 }

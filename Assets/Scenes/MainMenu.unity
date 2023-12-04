@@ -5125,6 +5125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8664828f0405499598a89557e2a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: []
 --- !u!4 &1272934079
 Transform:
   m_ObjectHideFlags: 0
@@ -8328,6 +8329,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1835494016}
+    - target: {fileID: 6618557486003383713, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486003383713, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557486003383713, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132989971, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557486003383713, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AudioControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486003383713, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486254949446, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557486254949446, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486254949446, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486280920389, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557486280920389, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetSetting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486280920389, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6618557486305871489, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
       propertyPath: m_Name
       value: OptionPanel
@@ -8416,10 +8461,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6618557486381661622, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557486381661622, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AudioControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557486381661622, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6618557487311945613, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1835494016}
+    - target: {fileID: 6618557487579726589, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+    - target: {fileID: 6618557487579726589, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AudioControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618557487579726589, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
 --- !u!1001 &8428118392306459244
