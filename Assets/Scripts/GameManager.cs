@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private string playerName = "No Name";
     private bool cameraEffectState = true;
     private bool isPaused = false;
+    private RankingSystem rankingSystem;
     public List<GameObject> hp = new List<GameObject>();
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
     public static GameManager Instance
@@ -112,6 +113,11 @@ public class GameManager : MonoBehaviour
     {
         // 실패 화면 및 점수
         GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+        if(rankingSystem ==null)
+        {
+            rankingSystem = GameObject.Find("RankingManager").GetComponent<RankingSystem>();
+        }
+        rankingSystem.ScoreSet(score, playerName);
         SetIsPaused();
     }
 
@@ -119,6 +125,11 @@ public class GameManager : MonoBehaviour
     {
         // 성공 화면 및 점수
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+        if (rankingSystem == null)
+        {
+            rankingSystem = GameObject.Find("RankingManager").GetComponent<RankingSystem>();
+        }
+        rankingSystem.ScoreSet(score,playerName);
         SetIsPaused();
     }
 
