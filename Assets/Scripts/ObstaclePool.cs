@@ -19,9 +19,9 @@ public class ObstaclePool : MonoBehaviour
     public enum ObstacleType
     {
         Log,
-        Arrow,
         Rock,
-        Trap
+        Trap,
+        Arrow
     }
 
     void Start()
@@ -37,9 +37,9 @@ public class ObstaclePool : MonoBehaviour
 
         // 각각의 종류에 대한 풀 초기화
         InitializePool(ObstacleType.Log, logPrefab);
-        InitializePool(ObstacleType.Arrow, arrowPrefab);
         InitializePool(ObstacleType.Rock, rockPrefab);
         InitializePool(ObstacleType.Trap, trapPrefab);
+        InitializePool(ObstacleType.Arrow, arrowPrefab);
     }
 
 

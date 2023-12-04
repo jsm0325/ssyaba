@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     float currentTime = 0;
     Rigidbody rigid;
-    public float jumpPower = 3.0f;
+    public float jumpPower = 50.0f;
     public bool isAnim = false;
+    bool isJumping = false;
     public GameObject judge;
     void Start()
     {
@@ -42,8 +43,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //점프 애니메이션
-            rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            if(!isJumping)
+            {
+                rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                isJumping = true;
+            }
         }
         if (isAnim == true)
         {
@@ -57,6 +61,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            isJumping = false;
+        }
+    }
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "obstacle")
