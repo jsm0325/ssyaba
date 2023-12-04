@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
             
             currentHp -= damage;
             Debug.LogError(currentHp);
-            GameObject.Destroy(hp[currentHp]);
+            //GameObject.Destroy(hp[currentHp]);
         }
         else if (currentHp == 0)
         {

@@ -10,24 +10,34 @@ public class PlayerController : MonoBehaviour
     Rigidbody rigid;
     public float jumpPower = 3.0f;
     public bool isAnim = false;
-
+    public GameObject judge;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        judge = GameObject.Find("judge");
+        judge.SetActive(false);
         //idle 달리는 애니메이션
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) && isAnim == false)
+        if (Input.GetKeyDown(KeyCode.J))
         {
-            isAnim = true;
+            if (!isAnim)
+            {
+                judge.SetActive(true);
+                isAnim = true;
+            }
             //막기 애니메이션
         }
-        if (Input.GetKeyDown(KeyCode.K) && isAnim == false)
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            currentTime += Time.deltaTime;
+            if (!isAnim) 
+            {
+                judge.SetActive(true);
+                isAnim = true;
+            }
             //쳐내기 애니메이션
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -38,23 +48,22 @@ public class PlayerController : MonoBehaviour
         if (isAnim == true)
         {
             currentTime += Time.deltaTime;
-            if (currentTime > 0.25f)
+            if (currentTime > 0.1f)
             {
                 isAnim = false;
+                judge.SetActive(false);
+                currentTime = 0;
             }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider col)
     {
-        if (collision.gameObject.tag == "obstacle" && isAnim == false)
+        if (col.gameObject.tag == "obstacle")
         {
+            col.gameObject.GetComponent<Obstacle>().ResetObstacle();
             GameManager.Instance.DecreaseHp(1);
         }
-        if (collision.gameObject.tag == "obstacle" && isAnim == true)
-        {
-            GameObject.Destroy(collision.gameObject);
-            GameManager.Instance.IncreaseScore(1);
-        }
     }
+
 }
