@@ -58,7 +58,35 @@ public class UIManager : MonoBehaviour
 
     public void ResetSetting()
     {
-        
+
+        //뮤트 리셋
+        if (audioListener == null)
+        {
+            audioListener = GameObject.FindWithTag("MainCamera").GetComponent<AudioListener>();
+        }
+        AudioListener.volume = 1;
+        GameObject button = GameObject.Find("Mute");
+        Image buttonImage = button.GetComponent<Image>();
+        buttonImage.sprite = AudioOnImage;
+
+        //이펙트 리셋
+        GameManager.Instance.ReSetCameraEffectState();
+        button = GameObject.Find("EffectButton");
+        buttonImage = button.GetComponent<Image>();
+        Color color = buttonImage.color;
+        color.a = 1;
+        buttonImage.color = color;
+
+        //오디오 리셋
+        GameObject audio = GameObject.Find("Mute");
+        string[] soundName = { "Master", "BGM", "SFX" };
+        for(int i=0; i<3; i++)
+        {
+            Slider audioSlider = GameObject.Find(soundName[i] + "Volume").GetComponent<Slider>();
+            audioSlider.value = 0;
+            masterMixer.SetFloat(soundName[i], 0);
+        }
+
     }
 
     public void ToggleAudioVolume(GameObject button)
@@ -116,9 +144,5 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(false);
         GameManager.Instance.SetIsPaused();
-    }
-    public void end()
-    {
-        GameManager.Instance.GameOver();
     }
 }

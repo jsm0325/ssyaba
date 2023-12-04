@@ -9,11 +9,9 @@ public class GameManager : MonoBehaviour
     private int currentHp = 0;
     private int maxHp = 5;
     private int score = 0;
-    private int currency = 0;
     private string playerName = "No Name";
     private bool cameraEffectState = true;
     private bool isPaused = false;
-
     public List<GameObject> hp = new List<GameObject>();
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
     public static GameManager Instance
@@ -59,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(GameObject.Find("hp1") != null)
+        if (GameObject.Find("hp1") != null)
         {
             hp.Add(GameObject.Find("hp1"));
             hp.Add(GameObject.Find("hp2"));
@@ -76,10 +74,10 @@ public class GameManager : MonoBehaviour
     {
         if (currentHp > 0)
         {
-            
+
             currentHp -= damage;
             Debug.LogError(currentHp);
-            //GameObject.Destroy(hp[currentHp]);
+            GameObject.Destroy(hp[currentHp]);
         }
         else if (currentHp == 0)
         {
@@ -100,31 +98,28 @@ public class GameManager : MonoBehaviour
     }
     public void DecreaseScore(int amount)
     {
-        score -=amount;
+        score -= amount;
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
 
-    // 재화 관리
-    public void IncreaseCurrency(int amount)
-    {
-        currency += amount;
-    }
-    public void DecreaseCurrency(int amount)
-    {
-        currency -= amount;
-    }
 
     // 게임 승리 및 패배 관리
     public void GameOver()
     {
         // 실패 화면 및 점수
-        GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+        SetIsPaused();
     }
 
     public void GameClear()
     {
         // 성공 화면 및 점수
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+        SetIsPaused();
     }
 
     public void SetName(TextMeshProUGUI Inputname)
@@ -135,6 +130,10 @@ public class GameManager : MonoBehaviour
     public void SetCameraEffectState()
     {
         cameraEffectState = !cameraEffectState;
+    }
+    public void ReSetCameraEffectState()
+    {
+        cameraEffectState = true;
     }
     public bool ReturnCameraEffectState()
     {
