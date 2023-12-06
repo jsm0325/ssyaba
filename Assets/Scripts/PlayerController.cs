@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
         {
             col.gameObject.GetComponent<Obstacle>().ResetObstacle();
             GameManager.Instance.DecreaseHp(1);
+        }else if (col.gameObject.tag == "tobstacle")
+        {
+            col.gameObject.GetComponent<Tutorial>().ResetObstacle();
         }
     }
 

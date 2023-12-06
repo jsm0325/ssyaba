@@ -50,8 +50,6 @@ public class RankingSystem : MonoBehaviour
 
     public void ShowRanking()
     {
-        rankNameCurrent.text = PlayerPrefs.GetString("CurrentPlayerName");
-        rangkScoreCurrent.text = PlayerPrefs.GetInt("CurrentPlayerScore").ToString();
         for (int i = 0; i < 10; i++)
         {
             bestScore[i] = PlayerPrefs.GetInt(i + "BestScore");

@@ -130,6 +130,7 @@ public class UIManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        GameManager.Instance.ReSetIsPaused();
     }
     public void OpenPanel(GameObject panel)
     {
@@ -144,5 +145,9 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(false);
         GameManager.Instance.SetIsPaused();
+    }
+    public void ResetScene()
+    {
+        GameManager.Instance.ResetGame();
     }
 }

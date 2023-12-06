@@ -22,7 +22,7 @@ public class TutorialJudge : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "obstacle" && controller.isAnim == true)
+        if (col.gameObject.tag == "tobstacle" && controller.isAnim == true)
         {
             col.gameObject.GetComponent<Tutorial>().ResetObstacle();
         }

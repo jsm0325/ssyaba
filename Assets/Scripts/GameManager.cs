@@ -51,8 +51,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
-
-
     }
 
 
@@ -163,5 +161,21 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             isPaused = true;
         }
+    }
+    public void ReSetIsPaused()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+    }
+
+    public void ResetGame()
+    {
+        currentHp = maxHp;
+        score = 0;
+        isPaused = false;
+        Time.timeScale = 1;
+
+        // 맵초기화, 플레이어 위치 초기화, 노래 초기화, 장애물 초기화
+
     }
 }

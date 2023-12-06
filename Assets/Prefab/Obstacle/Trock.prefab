@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7869777486339329701}
   m_Layer: 0
   m_Name: Trock
-  m_TagString: obstacle
+  m_TagString: tobstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,4 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4f419b0e81b9a408e334f9114be0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialController: {fileID: 0}
   moveSpeed: 10
