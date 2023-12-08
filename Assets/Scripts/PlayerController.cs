@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     public bool isAnim = false;
     bool isJumping = false;
     public GameObject judge;
+
+    private Animator anim;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
         judge = GameObject.Find("judge");
         judge.SetActive(false);
+        anim = GetComponent<Animator>();
         //idle 달리는 애니메이션
     }
 
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
             {
                 judge.SetActive(true);
                 isAnim = true;
+                anim.SetInteger("attack", 1);
             }
             //막기 애니메이션
         }
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
             {
                 judge.SetActive(true);
                 isAnim = true;
+                anim.SetInteger("attack", 2);
             }
             //쳐내기 애니메이션
         }
@@ -47,6 +52,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
                 isJumping = true;
+                anim.SetBool("jump", true);
             }
         }
         if (isAnim == true)
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Floor")
         {
             isJumping = false;
+            anim.SetBool("jump", false);
         }
     }
     private void OnTriggerEnter(Collider col)
@@ -73,8 +80,9 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "obstacle")
         {
             col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            anim.SetTrigger("hit");
             GameManager.Instance.DecreaseHp(1);
-        }else if (col.gameObject.tag == "tobstacle")
+        } else if (col.gameObject.tag == "tobstacle")
         {
             col.gameObject.GetComponent<Tutorial>().ResetObstacle();
         }
