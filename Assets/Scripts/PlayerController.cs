@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
             {
                 isAnim = false;
                 judge.SetActive(false);
+                anim.SetInteger("attack", 0);
                 currentTime = 0;
             }
         }
