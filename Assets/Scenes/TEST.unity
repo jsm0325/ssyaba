@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474391766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -99.8}
+  m_LocalPosition: {x: 0, y: 0.5, z: -56.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d060dabd6cc4b4196abebf2de4b5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logPrefab: {fileID: 4402595480413262601, guid: 3009239a7a33ca2478b620ea8f59264e, type: 3}
-  arrowPrefab: {fileID: 1482720307076639274, guid: e226b64d96e53f44f849c10c1a7f2404, type: 3}
-  rockPrefab: {fileID: 4179430318086753918, guid: 2081304471b07234cb1296fb7deae6ee, type: 3}
+  logPrefab: {fileID: 1120742204608625164, guid: 6b3f0de3e1b14b24d8369a7ad020ea25, type: 3}
+  arrowPrefab: {fileID: 1784753391711381931, guid: 4b8caa7f28d356144bdf83ef57baef2b, type: 3}
+  rockPrefab: {fileID: 5703770948731352739, guid: 2081304471b07234cb1296fb7deae6ee, type: 3}
   trapPrefab: {fileID: 6262270154612252210, guid: 779e61d8c319bae4aba8bbdd9da403c7, type: 3}
   poolSize: 4
 --- !u!4 &1459616718
