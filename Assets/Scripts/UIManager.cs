@@ -181,5 +181,6 @@ public class UIManager : MonoBehaviour
     public void ResetScene()
     {
         GameManager.Instance.ResetGame();
+        LoadScene("MainStage");
     }
 }
