@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool isAnim = false;
     bool isJumping = false;
     public GameObject judge;
-
+    public AudioManager audioManager;
     private Animator anim;
     void Start()
     {
@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(audioManager == null)
+        {
+            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
         if (Input.GetKeyDown(KeyCode.J))
         {
             if (!isAnim)
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
                 judge.SetActive(true);
                 isAnim = true;
                 anim.SetInteger("attack", 1);
+                audioManager.PlaySFX("Shield");
             }
             //막기 애니메이션
         }
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
                 judge.SetActive(true);
                 isAnim = true;
                 anim.SetInteger("attack", 2);
+                audioManager.PlaySFX("Knife");
             }
             //쳐내기 애니메이션
         }
@@ -74,6 +80,7 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
             anim.SetBool("jump", false);
+
         }
     }
     private void OnTriggerEnter(Collider col)
