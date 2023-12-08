@@ -56,6 +56,39 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void setSetting()
+    {
+        //뮤트 
+        if (audioListener == null)
+        {
+            audioListener = GameObject.FindWithTag("MainCamera").GetComponent<AudioListener>();
+        }
+        GameObject button = GameObject.Find("Mute");
+        Image buttonImage = button.GetComponent<Image>();
+        if (AudioListener.volume == 0)
+        {
+            buttonImage.sprite = AudioOffImage;
+        }
+        else
+        {
+            buttonImage.sprite = AudioOnImage;
+        }
+        //이펙트 
+        button = GameObject.Find("EffectButton");
+        buttonImage = button.GetComponent<Image>();
+        Color color = buttonImage.color;
+        buttonImage.color = color;
+
+        //오디오 
+        string[] soundName = { "Master", "BGM", "SFX" };
+        for (int i = 0; i < 3; i++)
+        {
+            Slider audioSlider = GameObject.Find(soundName[i] + "Volume").GetComponent<Slider>();
+            float temp = 0;
+            masterMixer.GetFloat(soundName[i], out temp);
+            audioSlider.value = temp;
+        }
+    }
     public void ResetSetting()
     {
 
@@ -78,7 +111,6 @@ public class UIManager : MonoBehaviour
         buttonImage.color = color;
 
         //오디오 리셋
-        GameObject audio = GameObject.Find("Mute");
         string[] soundName = { "Master", "BGM", "SFX" };
         for(int i=0; i<3; i++)
         {
@@ -86,7 +118,6 @@ public class UIManager : MonoBehaviour
             audioSlider.value = 0;
             masterMixer.SetFloat(soundName[i], 0);
         }
-
     }
 
     public void ToggleAudioVolume(GameObject button)
@@ -131,6 +162,7 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         GameManager.Instance.ReSetIsPaused();
+        
     }
     public void OpenPanel(GameObject panel)
     {

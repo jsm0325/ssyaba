@@ -1349,6 +1349,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6618557487311945611, guid: b3b0cdacfb888bf40868e54713a18483, type: 3}
   m_PrefabInstance: {fileID: 838064734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &838064739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838064736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10cac733a75fd4438386aa14aa3c21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ui: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
 --- !u!1 &953960113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1940,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2060538151}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8428118394132990188, guid: a8aa39a32c874bd4a8c151af57f6c5ef, type: 3}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: setSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1327375953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,7 +2534,7 @@ AudioSource:
   m_GameObject: {fileID: 1523762378}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7474625863133991714, guid: efdecd50ae0837b47a5a0c5c20259463, type: 2}
+  OutputAudioMixerGroup: {fileID: -6590658373326102052, guid: efdecd50ae0837b47a5a0c5c20259463, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3298,7 +3335,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: dd9304c400f79b5498195a365a152db7, type: 3}
   bgm:
   - name: BGM
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ce2ec72b6514a5d47ba128a716751140, type: 3}
   bgmPlayer: {fileID: 1523762380}
   sfxPlayer:
   - {fileID: 556165002}
