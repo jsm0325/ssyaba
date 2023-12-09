@@ -17,9 +17,9 @@ public class ObstacleController : MonoBehaviour
 
     public ObstaclePool obstaclePool;
 
-    float[] drumbeatA = { 1, 1, 1, 1, 1, 1, 0.5f, 0.5f, 1, 1, 1, 1, 1, 1, 1, 0.5f, 0.5f, 1 };
-    float[] drumbeatB = {0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f,
-    0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f, 1 };
+    float[] drumbeatA = {1, 1, 1, 1, 1, 1, 1f, 0.5f, 0.5f, 1, 1, 1, 1, 1, 1, 1f, 0.5f, 0.5f};
+    float[] drumbeatB = {1f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f,
+    0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f, 0.5f, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, 0.5f, 0.5f};
     string[] drumSeq = { "a", "b", "a", "b", "b" };
     int i = 0;
     int j = 0;
