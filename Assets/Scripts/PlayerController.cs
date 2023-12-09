@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject judge;
     public AudioManager audioManager;
     private Animator anim;
+    public Camera mainCmera;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour
         {
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
+        if(mainCmera ==null)
+        {
+            mainCmera = Camera.main;
+        }
+        
         if (Input.GetKeyDown(KeyCode.J))
         {
             if (!isAnim)
@@ -61,6 +67,16 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("jump", true);
             }
         }
+        if (isJumping == true)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime > 0.5f)
+            {
+                isJumping = false;
+                anim.SetBool("jump", false);
+                currentTime = 0;
+            }
+        }
         if (isAnim == true)
         {
             currentTime += Time.deltaTime;
@@ -87,8 +103,16 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "obstacle")
         {
-            col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
+            if (col.gameObject.GetComponent<Obstacle>() == null)
+            {
+                col.gameObject.GetComponent<ObstacleArrow>().ResetObstacle();
+            }else
+            {
+                col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            }
             anim.SetTrigger("hit");
+
             GameManager.Instance.DecreaseHp(1);
         } else if (col.gameObject.tag == "tobstacle")
         {

@@ -21,7 +21,6 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] AudioSource[] sfxPlayer = null;
-
     private void Start()
     {
         instance = this;
@@ -43,7 +42,6 @@ public class AudioManager : MonoBehaviour
     {
         bgmPlayer.Stop();
     }
-
     public void PlaySFX(string p_sfxName)
     {
         for (int i = 0; i < sfx.Length; i++)

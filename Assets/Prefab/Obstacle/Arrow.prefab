@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 1784753391711381930}
   - component: {fileID: 4904106041546810086}
   - component: {fileID: 2549402965371006200}
+  - component: {fileID: -4583668264858879394}
   m_Layer: 0
-  m_Name: arrow
+  m_Name: Arrow
   m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,3 +130,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 5
+--- !u!114 &-4583668264858879394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784753391711381931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a505da9f3f045c4a8c2d569a5641237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: Arrow

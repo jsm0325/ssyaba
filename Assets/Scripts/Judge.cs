@@ -24,7 +24,14 @@ public class Judge : MonoBehaviour
     {
         if (col.gameObject.tag == "obstacle" && controller.isAnim == true)
         {
-            col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            if (col.gameObject.GetComponent<Obstacle>() == null)
+            {
+                col.gameObject.GetComponent<ObstacleArrow>().ResetObstacle();
+            }
+            else
+            {
+                col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            }
             GameManager.Instance.IncreaseScore(1);
         }
     }

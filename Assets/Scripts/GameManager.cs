@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     private string playerName = "No Name";
     private bool cameraEffectState = true;
     private bool isPaused = false;
+    private bool isStarted = false;
     private RankingSystem rankingSystem;
+    
     public AudioManager audioManager;
     public List<GameObject> hp = new List<GameObject>();
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
@@ -69,6 +71,11 @@ public class GameManager : MonoBehaviour
             hp.Add(GameObject.Find("hp4"));
             hp.Add(GameObject.Find("hp5"));
         }
+        if (SceneManager.GetActiveScene().name == "MainStage" && isStarted == false)
+        {
+            GameStart();
+        }
+
     }
 
 
@@ -109,7 +116,11 @@ public class GameManager : MonoBehaviour
     {
         return score;
     }
-
+    public void GameStart()
+    {
+        audioManager.PlayBGM("BGM");
+        isStarted = true;
+    }
 
     // 게임 승리 및 패배 관리
     public void GameOver()
@@ -124,6 +135,8 @@ public class GameManager : MonoBehaviour
         rankingSystem.ScoreSet(score, playerName);
         SetIsPaused();
     }
+
+
 
     public void GameClear()
     {
@@ -181,7 +194,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         isPaused = false;
         Time.timeScale = 1;
-
+        isStarted = false;
         // 맵초기화, 플레이어 위치 초기화, 노래 초기화, 장애물 초기화
 
     }

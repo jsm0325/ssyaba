@@ -15,13 +15,13 @@ public class ObstacleArrow : MonoBehaviour
     private void OnEnable()
     {
         middle = obstacleCotroller.middlePosition.position;
-        StartCoroutine(COR_BezierCurves());
+        _duration = CaculateDistance();
+        StartCoroutine(COR_BezierCurves(_duration));
     }
     IEnumerator COR_BezierCurves(float duration = 1.0f)
     {
         float time = 0f;
 
-         
         while (true)
         {
             if (time > 1f)
@@ -35,7 +35,7 @@ public class ObstacleArrow : MonoBehaviour
 
             Vector3 direction = p5 - p4;
             transform.rotation = Quaternion.LookRotation(direction.normalized);
-            transform.rotation *= Quaternion.Euler(90f, 0f, 0f);
+            transform.rotation *= Quaternion.Euler(0f, -90f, 0f);
 
             time += Time.deltaTime / duration;
 
@@ -54,10 +54,16 @@ public class ObstacleArrow : MonoBehaviour
     }
 
     // 장애물이 endPoint 도착하면 비활성화 후 원래 위치로 초기화
-    void ResetObstacle()
+    public void ResetObstacle()
     {
         // 비활성화되고 시작 지점으로 이동
         gameObject.SetActive(false);
         transform.position = obstacleCotroller.startPosition.position;
+    }
+
+    float CaculateDistance()
+    {
+        return Vector3.Distance(obstacleCotroller.startPosition.position, obstacleCotroller.endPosition.position)/10f;
+
     }
 }

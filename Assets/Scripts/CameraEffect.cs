@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class CameraEffect : MonoBehaviour
 {
     public float ShakeAmount; // 카메라 흔들리는 정도
-    private float ShakeTime = 1f; // 카메라 흔들리는 시간
+    private float ShakeTime = 0f; // 카메라 흔들리는 시간
     Vector3 initialPosition;
     public Image damageEffect;
     void Start()
     {
         initialPosition = this.transform.position;
-        StartCoroutine(FadeDamageEffect());
+        
         
     }
 
@@ -32,6 +32,7 @@ public class CameraEffect : MonoBehaviour
     public void ShakeTimeSet(float time)
     {
         ShakeTime = time;
+        StartCoroutine(FadeDamageEffect());
     }
 
     IEnumerator FadeDamageEffect()
