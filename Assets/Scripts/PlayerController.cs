@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             }
             //막기 애니메이션
         }
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!isAnim) 
             {
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             }
             //쳐내기 애니메이션
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             if(!isJumping)
             {
