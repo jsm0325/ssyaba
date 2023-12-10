@@ -103,7 +103,11 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "obstacle")
         {
-            mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
+            if(GameManager.Instance.ReturnCameraEffectState() == true)
+            {
+                mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
+            }
+            
             if (col.gameObject.GetComponent<Obstacle>() == null)
             {
                 col.gameObject.GetComponent<ObstacleArrow>().ResetObstacle();
@@ -116,7 +120,15 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.DecreaseHp(1);
         } else if (col.gameObject.tag == "tobstacle")
         {
-            col.gameObject.GetComponent<Tutorial>().ResetObstacle();
+            mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
+            if (col.gameObject.GetComponent<Tutorial>() == null)
+            {
+                col.gameObject.GetComponent<TutorialObstacleArrow>().ResetObstacle();
+            }
+            else
+            {
+                col.gameObject.GetComponent<Tutorial>().ResetObstacle();
+            }
         }
     }
 

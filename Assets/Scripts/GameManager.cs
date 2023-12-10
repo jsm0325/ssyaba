@@ -195,7 +195,6 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         isStarted = false;
-        // 맵초기화, 플레이어 위치 초기화, 노래 초기화, 장애물 초기화
 
     }
 }

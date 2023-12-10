@@ -1000,6 +1000,7 @@ MonoBehaviour:
   isAnim: 0
   judge: {fileID: 0}
   audioManager: {fileID: 0}
+  mainCmera: {fileID: 0}
 --- !u!54 &1091657233
 Rigidbody:
   m_ObjectHideFlags: 0
