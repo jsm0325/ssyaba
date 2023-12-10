@@ -14,7 +14,7 @@ public class ObstacleController : MonoBehaviour
 
     float trapTime = 0f;
     float arrowTime = 0f;
-
+    bool isCreatable = true;
     public ObstaclePool obstaclePool;
 
     float[] drumbeatA = {1, 1, 1, 1, 1, 1, 1f, 0.5f, 0.5f, 1, 1, 1, 1, 1, 1, 1f, 0.5f, 0.5f};
@@ -41,37 +41,41 @@ public class ObstacleController : MonoBehaviour
         }*/
 
         float beat = 60.0f/bpm;
-
-        if (drumSeq[i] == "a")
+        if(isCreatable == true)
         {
-            currentTime += Time.deltaTime;
-            if (currentTime > beat * drumbeatA[j])
+            if (drumSeq[i] == "a")
             {
-                ActivateObstacle();
-                j++;
-                currentTime = 0;
+                currentTime += Time.deltaTime;
+                if (currentTime > beat * drumbeatA[j])
+                {
+                    ActivateObstacle();
+                    j++;
+                    currentTime = 0;
+                }
+                if (j >= drumbeatA.Length)
+                {
+                    j = 0;
+                    i++;
+                }
             }
-            if (j >= drumbeatA.Length)
+            else
             {
-                j = 0;
-                i++;
+                currentTime += Time.deltaTime;
+                if (currentTime > beat * drumbeatB[k])
+                {
+                    ActivateObstacle();
+                    k++;
+                    currentTime = 0;
+                }
+                if (k >= drumbeatB.Length)
+                {
+                    k = 0;
+                    i++;
+                }
             }
+            
         }
-        else
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime > beat * drumbeatB[k])
-            {
-                ActivateObstacle();
-                k++;
-                currentTime = 0;
-            }
-            if (k >= drumbeatB.Length)
-            {
-                k = 0;
-                i++;
-            }
-        }
+        isCreatable = !isCreatable;
         arrowTime += Time.deltaTime;
         if (arrowTime > beat * 8)
         {

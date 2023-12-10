@@ -24,11 +24,11 @@ public class TutorialJudge : MonoBehaviour
     {
         if (col.gameObject.tag == "tobstacle" && controller.isAnim == true)
         {
-            if (col.gameObject.GetComponent<Tutorial>() == null)
+            if (col.gameObject.GetComponent<TutorialObstacleArrow>() != null)
             {
                 col.gameObject.GetComponent<TutorialObstacleArrow>().ResetObstacle();
             }
-            else
+            else if(col.gameObject.GetComponent<Tutorial>() != null)
             {
                 col.gameObject.GetComponent<Tutorial>().ResetObstacle();
             }

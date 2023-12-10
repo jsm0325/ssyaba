@@ -99,12 +99,15 @@ public class PlayerController : MonoBehaviour
                 mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
             }
             
-            if (col.gameObject.GetComponent<Obstacle>() == null)
+            if (col.gameObject.GetComponent<ObstacleArrow>() != null)
             {
                 col.gameObject.GetComponent<ObstacleArrow>().ResetObstacle();
-            }else
+            }else if (col.gameObject.GetComponent<Obstacle>() != null)
             {
                 col.gameObject.GetComponent<Obstacle>().ResetObstacle();
+            }else if (col.gameObject.GetComponent<ObstacleLog>() != null)
+            {
+                col.gameObject.GetComponent<ObstacleLog>().ResetObstacle();
             }
             anim.SetTrigger("hit");
 
@@ -112,13 +115,17 @@ public class PlayerController : MonoBehaviour
         } else if (col.gameObject.tag == "tobstacle")
         {
             mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
-            if (col.gameObject.GetComponent<Tutorial>() == null)
+            if (col.gameObject.GetComponent<TutorialObstacleArrow>() != null)
             {
                 col.gameObject.GetComponent<TutorialObstacleArrow>().ResetObstacle();
             }
-            else
+            else if(col.gameObject.GetComponent<Tutorial>() != null)
             {
                 col.gameObject.GetComponent<Tutorial>().ResetObstacle();
+            }
+            else if (col.gameObject.GetComponent<TutorialLog>() != null)
+            {
+                col.gameObject.GetComponent<TutorialLog>().ResetObstacle();
             }
         }
     }

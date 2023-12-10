@@ -5,11 +5,6 @@ using UnityEngine;
 public class Judge : MonoBehaviour
 {
     PlayerController controller;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -24,15 +19,16 @@ public class Judge : MonoBehaviour
     {
         if (col.gameObject.tag == "obstacle" && controller.isAnim == true)
         {
-            if (col.gameObject.GetComponent<Obstacle>() == null)
+            if (col.gameObject.GetComponent<ObstacleArrow>() != null)
             {
                 col.gameObject.GetComponent<ObstacleArrow>().ResetObstacle();
             }
-            else
+            else if(col.gameObject.GetComponent<Obstacle>() != null)
             {
                 col.gameObject.GetComponent<Obstacle>().ResetObstacle();
             }
             GameManager.Instance.IncreaseScore(1);
         }
     }
+
 }

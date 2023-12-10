@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class ObstacleLog : MonoBehaviour
 {
     private ObstacleController obstacleCotroller;
     public float moveSpeed = 5f;   // 이동 속도
