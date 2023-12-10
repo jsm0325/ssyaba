@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private RankingSystem rankingSystem;
     
     public AudioManager audioManager;
-    public List<GameObject> hp = new List<GameObject>();
+    public List<GameObject> hp;
     // 싱글톤으로 게임매니저 선언해서 어느 스크립트에서나 게임매니저 불러올 수 있고 씬전환시 게임매니저 사라지지않도록 함
     public static GameManager Instance
     {
@@ -59,26 +59,34 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
         if (audioManager == null)
         {
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
-        if (GameObject.Find("hp1") != null)
+        if (hp.Count != 5)
         {
-            hp.Add(GameObject.Find("hp1"));
-            hp.Add(GameObject.Find("hp2"));
-            hp.Add(GameObject.Find("hp3"));
-            hp.Add(GameObject.Find("hp4"));
-            hp.Add(GameObject.Find("hp5"));
+            hp = new List<GameObject>(new GameObject[5]);
         }
         if (SceneManager.GetActiveScene().name == "MainStage" && isStarted == false)
         {
             GameStart();
         }
 
+        if (hp[1] == null && GameObject.Find("hp1") != null)
+        {
+            hp[0] = GameObject.Find("hp1") ?? throw new System.Exception("hp1 not found");
+            hp[1] = GameObject.Find("hp2") ?? throw new System.Exception("hp2 not found");
+            hp[2] = GameObject.Find("hp3") ?? throw new System.Exception("hp3 not found");
+            hp[3] = GameObject.Find("hp4") ?? throw new System.Exception("hp4 not found");
+            hp[4] = GameObject.Find("hp5") ?? throw new System.Exception("hp5 not found");
+        }
     }
 
-
+    public int GetHealth()
+    {
+        return currentHp;
+    }
 
     // 체력 관리
     public void DecreaseHp(int damage)
@@ -88,9 +96,9 @@ public class GameManager : MonoBehaviour
 
             currentHp -= damage;
             Debug.LogError(currentHp);
-            GameObject.Destroy(hp[currentHp]);
+            hp[currentHp].gameObject.SetActive(false);
         }
-        else if (currentHp == 0)
+        if (currentHp == 0)
         {
             GameOver();
         }
@@ -118,8 +126,10 @@ public class GameManager : MonoBehaviour
     }
     public void GameStart()
     {
-        audioManager.PlayBGM("BGM");
         isStarted = true;
+
+        audioManager.PlayBGM("BGM");
+
     }
 
     // 게임 승리 및 패배 관리
@@ -195,6 +205,5 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         isStarted = false;
-
     }
 }

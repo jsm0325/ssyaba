@@ -67,16 +67,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("jump", true);
             }
         }
-        if (isJumping == true)
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime > 0.5f)
-            {
-                isJumping = false;
-                anim.SetBool("jump", false);
-                currentTime = 0;
-            }
-        }
+
         if (isAnim == true)
         {
             currentTime += Time.deltaTime;
@@ -103,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "obstacle")
         {
-            if(GameManager.Instance.ReturnCameraEffectState() == true)
+            if(GameManager.Instance.ReturnCameraEffectState() == true && GameManager.Instance.GetHealth() >0)
             {
                 mainCmera.gameObject.GetComponent<CameraEffect>().ShakeTimeSet(1);
             }
